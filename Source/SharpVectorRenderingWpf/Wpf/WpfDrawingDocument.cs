@@ -614,40 +614,11 @@ namespace SharpVectors.Renderers.Wpf
 
                 if (TryCast.Cast(geometry, out path))
                 {
-                    if (path.FillContains(pt, 1, ToleranceType.Absolute))
+                    if (path.StrokeContains(pen,pt, 1, ToleranceType.Absolute))
                     {
                         return true;
                     }
 
-                    //PathFigureCollection pathFigures = path.Figures;
-                    //int itemCount = pathFigures.Count;
-                    //if (itemCount == 1)
-                    //{
-                    //    if (pathFigures[0].IsClosed && path.FillContains(pt))
-                    //    {
-                    //        return true;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    for (int f = 0; f < itemCount; f++)
-                    //    {
-                    //        PathFigure pathFigure = pathFigures[f];
-                    //        if (pathFigure.IsClosed)
-                    //        {
-                    //            PathFigureCollection testFigures = new PathFigureCollection();
-                    //            testFigures.Add(pathFigure);
-
-                    //            PathGeometry testPath = new PathGeometry();
-                    //            testPath.Figures = testFigures;
-
-                    //            if (testPath.FillContains(pt))
-                    //            {
-                    //                return true;
-                    //            }
-                    //        }
-                    //    }
-                    //}
                 }
                 else if (TryCast.Cast(geometry, out line))
                 {
@@ -671,14 +642,14 @@ namespace SharpVectors.Renderers.Wpf
                     }
                 }
             }
-            else if (brush != null && drawing.Geometry.FillContains(pt))
-            {
-                return true;
-            }
-            else if (drawing.Geometry.FillContains(pt))
-            {
-                return true;
-            }
+            //else if (brush != null && drawing.Geometry.FillContains(pt))
+            //{
+            //    return true;
+            //}
+            //else if (drawing.Geometry.FillContains(pt))
+            //{
+            //    return true;
+            //}
 
             return false;
         }
